@@ -120,7 +120,7 @@ while (true) {
                 if (firstQuestion === true) {
                     alert("Вы уже ответили на вопрос №1 правильно.")
                 }
-                firstQuestion = true
+                else {firstQuestion = true}
             } else {
                 alert("Неправильный ответ.")
             }
@@ -131,7 +131,7 @@ while (true) {
                 if (secondQuestion === true) {
                     alert("Вы уже ответили на вопрос №2 правильно.")
                 }
-                secondQuestion = true
+                else {secondQuestion = true}
             } else {
                 alert("Неправильный ответ.")
             }
@@ -142,7 +142,7 @@ while (true) {
                 if (thirdQuestion === true) {
                     alert("Вы уже ответили на вопрос №3 правильно.")
                 }
-                thirdQuestion = true
+                else {thirdQuestion = true}
             } else {
                 alert("Неправильный ответ.")
             }
