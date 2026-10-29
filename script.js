@@ -29,9 +29,6 @@ alert(
 );
 
 while (true) {
-    playerNumber = getRandomInt(1, 4)
-    bossNumber = getRandomInt(1, 4)
-
     if (room === "Вход") {
         const choice = prompt(
             "ВЫ У ВХОДА\n" +
@@ -259,8 +256,12 @@ while (true) {
         if (choice === "0") {
             break
         } else if (choice === "1") {
-            alert("Вы дёрнули за рычаг и что-то произошло.")
-            lever = true
+            if (lever === true) {
+                alert("Вы уже использовали рычаг.")
+            } else {
+                alert("Вы дёрнули за рычаг и что-то произошло.")
+                lever = true
+            }
         } else if (choice === "2") {
             if (inventory.includes("Священная лампа")) {
                 alert("Вы уже обыскали это место.")
@@ -411,6 +412,8 @@ while (true) {
                 if (inventory.includes("Ключ")) {
                     alert("Вы вставляете ключ в замочную скважину и вдруг оказывается, что он не подходит.")
                     alert("Вы не можете пройти в комнату с боссом, так как дверь закрыта")
+                } else {
+                    alert("Дверь перед вами закрыта, вы не можете её открыть.")
                 }
             }
         } else if (choice === "4") {
@@ -493,18 +496,24 @@ while (true) {
         if (choice === "0") {
             break
         } else if (choice === "1") {
+            alert(`У вас есть: ${balance} монет`)
             if (balance >= 60) {
                 alert("С шансом 25% ты можешь откупиться от битвы.")
+                playerNumber = getRandomInt(1, 4)
+                bossNumber = getRandomInt(1, 4)
                 if (playerNumber === bossNumber) {
                     alert("Рыцарь говорит: отдавай мне все монеты и беги отсюда так быстро, как только можешь.")
                     alert("С шансом 25% тебе повезло и ты смог выжить.")
                     alert("Рыцарь позволяет тебе сбежать.")
                     alert("Вы находите выход на свободу и бежите от замка так быстро, как не бегали никогда.")
                     break
-                }
-                else {
+                } else {
                     alert("Тебе не удалось откупиться, начинается битва.")
                 }
+            }
+            else {
+                alert("Вы не можете откупиться, так как у вас слишком мало монет.")
+                alert("Начинается битва.")
             }
         } else if (choice === "2") {
             if (inventory.includes("Защитный амулет")
