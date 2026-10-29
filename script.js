@@ -561,6 +561,7 @@ while (true) {
                     break
                 } else {
                     alert("Тебе не удалось откупиться, начинается битва.")
+                    balance = 0
                 }
             }
             else {
