@@ -6,7 +6,6 @@ let firstQuestion = false;
 let secondQuestion = false;
 let thirdQuestion = false;
 let eastDoor = false;
-let brick = false;
 let playerNumber = 0;
 let bossNumber = 0;
 
@@ -63,7 +62,7 @@ while (true) {
         } else if (choice === "6") {
             alert("Вы отправились в Восточный коридор.")
             room = "Восточный коридор"
-        } else if (choice == "7") {
+        } else if (choice === "7") {
             showInventory();
         } else {
             alert("Такого прохода не существует.")
@@ -394,8 +393,8 @@ while (true) {
             break
         } else if (choice === "1") {
             alert("Вы осмотрели комнату и вдруг нашли подозрительный кирпич.")
-            brick = confirm("Нажать на него?")
-            if (brick === true) {
+            confirm("Нажать на него?")
+            if (confirm === true) {
                 alert("Внезапно открывается только что закрытая дверь, которая отделяет вас от комнаты босса.")
                 eastDoor = true;
             } else {
@@ -404,13 +403,14 @@ while (true) {
         } else if (choice === "2") {
             alert("Вы осмотрели сундук и ничего не нашли.")
         } else if (choice === "3") {
-            if (inventory.includes("Ключ")) {
-                alert("Вы вставляете ключ в замочную скважину и вдруг оказывается, что он не подходит.")
-            } else if (eastDoor === true) {
+            if (eastDoor === true) {
                 alert("Вы проходите в комнату босса")
                 room = "Комната с боссом"
-            } else {
-                alert("Вы не можете пройти в комнату с боссом, так как дверь закрыта")
+            } else if (eastDoor === false) {
+                if (inventory.includes("Ключ")) {
+                    alert("Вы вставляете ключ в замочную скважину и вдруг оказывается, что он не подходит.")
+                    alert("Вы не можете пройти в комнату с боссом, так как дверь закрыта")
+                }
             }
         } else if (choice === "4") {
             showInventory();
@@ -492,25 +492,25 @@ while (true) {
         if (choice === "0") {
             break
         } else if (choice === "1") {
-            if (balance === 60) {
-                alert("С шансом 25% ты можешь откупиться от битвы")
+            if (balance >= 60) {
+                alert("С шансом 25% ты можешь откупиться от битвы.")
                 if (playerNumber === bossNumber) {
-                    alert("Рыцарь говорит: отдавай мне все монеты и беги отсюда так быстро, как только можешь")
+                    alert("Рыцарь говорит: отдавай мне все монеты и беги отсюда так быстро, как только можешь.")
                     alert("С шансом 25% тебе повезло и ты смог выжить.")
                     alert("Рыцарь позволяет тебе сбежать.")
                     alert("Вы находите выход на свободу и бежите от замка так быстро, как не бегали никогда.")
                     break
                 }
                 else {
-                    alert("Тебе не удалось откупиться, начинается битва")
+                    alert("Тебе не удалось откупиться, начинается битва.")
                 }
             }
         } else if (choice === "2") {
             if (inventory.includes("Защитный амулет")
                 && inventory.includes("Магическая трава")
-                    && inventory.includes("Магический меч")
-                        && inventory.includes("Священная лампа")
-                    ) {
+                && inventory.includes("Магический меч")
+                && inventory.includes("Священная лампа")
+            ) {
                 alert("Вы решаетесь на сражение и первым проявляете инициативу.")
                 alert("С помощью священной лампы вы мгновенно ослепляете огромного рыцаря.")
                 alert("Вы взбираетесь ему на спину и наносите магическим мечом 1-ый удар.")
