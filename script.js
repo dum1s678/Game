@@ -232,7 +232,7 @@ while (true) {
             balance += 15
             alert(`На вашем балансе: ${balance} монет.`)
         } else if (choice === "3") {
-            if (inventory.includes("ключ")) {
+            if (inventory.includes("Ключ")) {
                 alert("Вы отправились в финальную комнату с боссом.")
                 room = "Комната с боссом"
             } else {
@@ -404,7 +404,7 @@ while (true) {
         } else if (choice === "2") {
             alert("Вы осмотрели сундук и ничего не нашли.")
         } else if (choice === "3") {
-            if (inventory.includes("ключ")) {
+            if (inventory.includes("Ключ")) {
                 alert("Вы вставляете ключ в замочную скважину и вдруг оказывается, что он не подходит.")
             } else if (eastDoor === true) {
                 alert("Вы проходите в комнату босса")
@@ -507,10 +507,10 @@ while (true) {
             }
         } else if (choice === "2") {
             if (inventory.includes("Защитный амулет")
-                && inventory.includes("Магическая трава"
-                    && inventory.includes("Магический меч"
+                && inventory.includes("Магическая трава")
+                    && inventory.includes("Магический меч")
                         && inventory.includes("Священная лампа")
-                    ))) {
+                    ) {
                 alert("Вы решаетесь на сражение и первым проявляете инициативу.")
                 alert("С помощью священной лампы вы мгновенно ослепляете огромного рыцаря.")
                 alert("Вы взбираетесь ему на спину и наносите магическим мечом 1-ый удар.")
