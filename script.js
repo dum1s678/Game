@@ -11,7 +11,7 @@ let looked = {
 let questions = {
     "firstQuestion": false,
     "secondQuestion": false,
-    "thirdQuestio": false
+    "thirdQuestion": false
 }
 let items = {
     "lever": false,
