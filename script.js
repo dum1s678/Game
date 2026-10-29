@@ -19,8 +19,6 @@ let items = {
 }
 let room = "Вход";
 let balance = 0;
-let playerNumber = 0;
-let bossNumber = 0;
 
 function showInventory() {
     if (inventory.length === 0) {
@@ -553,8 +551,8 @@ while (true) {
             alert(`У вас есть: ${balance} монет`)
             if (balance >= 60) {
                 alert("С шансом 25% ты можешь откупиться от битвы.")
-                playerNumber = getRandomInt(1, 4)
-                bossNumber = getRandomInt(1, 4)
+                let playerNumber = getRandomInt(1, 4)
+                let bossNumber = getRandomInt(1, 4)
                 if (playerNumber === bossNumber) {
                     alert("Рыцарь говорит: отдавай мне все монеты и беги отсюда так быстро, как только можешь.")
                     alert("С шансом 25% тебе повезло и ты смог выжить.")
