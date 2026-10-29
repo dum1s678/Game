@@ -2,6 +2,9 @@ const inventory = [];
 let room = "Вход";
 let balance = 0;
 let lever = false;
+let firstQuestion = false;
+let secondQuestion = false;
+let thirdQuestion = false;
 
 function showInventory() {
     if (inventory.length === 0) {
@@ -79,8 +82,12 @@ while (true) {
         } else if (choice === "2") {
             alert("Вы обыскали камеру №2 и ничего в ней не нашли")
         } else if (choice === "3") {
-            alert("Вы обыскали камеру №3 и нашли магическую траву")
-            inventory.push("Магическая трава")
+            if (inventory.includes("Магическая трава")) {
+                alert("Вы уже обыскали это место")
+            } else {
+                alert("Вы обыскали камеру №3 и нашли магическую траву")
+                inventory.push("Магическая трава")
+            }
         } else if (choice === "4") {
             alert("Вы отправились в Зал испытаний")
             room = "Зал испытаний"
@@ -92,6 +99,96 @@ while (true) {
         } else if (choice === "7") {
             alert("Вы возвращаетесь в прошлую комнату")
             room = "Вход"
+        } else {
+            alert("Такого прохода не существует.")
+        }
+    }
+    else if (room === "Зал испытаний") {
+        const choice = prompt(
+            "ВЫ В ЗАЛЕ ИСПЫТАНИЙ, ЧТОБЫ ПРОЙТИ ОТВЕТЬТЕ ПРАВИЛЬНО НА 3 ВОПРОСА\n" +
+            "1 — Ответить на 1 вопрос\n" +
+            "2 — Ответить на 2 вопрос\n" +
+            "3 — Ответить на 3 вопрос\n" +
+            "4 — Пройти в следующую комнату\n" +
+            "5 — Проверить рюкзак\n" +
+            "6 — Вернуться назад\n" +
+            "0 — Завершить игру"
+        );
+        if (choice === "0") {
+            break
+        } else if (choice === "1") {
+            const firstAnswer = prompt("Что нужно осмотреть, чтобы найти Священную Лампу?")
+            if (firstAnswer === "Балкон") {
+                alert("Вы ответили правильно")
+                firstQuestion = true
+            } else {
+                alert("Неправильный ответ")
+            }
+        } else if (choice === "2") {
+            const secondAnswer = prompt("Сколько существует камер в Тюрьме - Западном коридоре?")
+            if (secondAnswer === "3") {
+                alert("Вы ответили правильно")
+                secondQuestion = true
+            } else {
+                alert("Неправильный ответ")
+            }
+        } else if (choice === "3") {
+            const thirdAnswer = prompt("Как называется вся локация?")
+            if (thirdAnswer === "ЗАТЕРЯННОЕ КОРОЛЕВСТВО?") {
+                alert("Вы ответили правильно")
+                thirdQuestion = true
+            } else {
+                alert("Неправильный ответ")
+            }
+        } else if (choice === "4") {
+            if (firstQuestion === true
+                && secondQuestion === true
+                && thirdQuestion === true
+                && lever === true) {
+                    alert("Вы выполнили все условия и прошли в закрытую комнату")
+                    if (inventory.includes("Защитный амулет")) {
+                        alert("Вы уже получили защитный амулет")
+                    } else {
+                        alert("Вы получаете защитный амулет")
+                        inventory.push("Защитный амулет")
+                    }
+                }
+        } else if (choice === "5") {
+            showInventory();
+        } else if (choice === "6") {
+            alert("Вы возвращаетесь в прошлую комнату")
+            room = "Тюрьма - Западный коридор"
+        } else {
+            alert("Такого прохода не существует.")
+        }
+    }
+    else if (room === "Коридор после тюрьмы") {
+        const choice = prompt(
+            "ВЫ В ЦЕНТРАЛЬНОМ КОРИДОРЕ\n" +
+            "1 — Осмотреть горшок\n" +
+            "2 — Осмотреть мешок\n" +
+            "3 — Пройти в западную комнату перед боссом\n" +
+            "4 — Проверить рюкзак\n" +
+            "5 — Вернуться назад\n" +
+            "0 — Завершить игру"
+        );
+        if (choice === "0") {
+            break
+        } else if (choice === "1") {
+            alert("Вы осмотрели горшок и нашли 5 монет")
+            balance += 5
+            alert(`На вашем балансе: ${balance} монет`)
+        } else if (choice === "2") {
+            alert("Вы осмотрели мешок и ничего не нашли")
+        } else if (choice === "3") {
+            alert("Вы отправились в комнату западную комнату перед боссом")
+            room = "Западная комната перед боссом"
+        } 
+        else if (choice === "4") {
+            showInventory();
+        } else if (choice === "5") {
+            alert("Вы возвращаетесь в прошлую комнату")
+            room = "Тюрьма - Западный коридор"
         } else {
             alert("Такого прохода не существует.")
         }
@@ -111,8 +208,12 @@ while (true) {
             alert("Вы дёрнули за рычаг и что-то произошло")
             lever = true
         } else if (choice === "2") {
-            alert("Вы нашли священную лампу")
-            inventory.push("Священная лампа")
+            if (inventory.includes("Священная лампа")) {
+                alert("Вы уже обыскали это место")
+            } else {
+                alert("Вы нашли священную лампу")
+                inventory.push("Священная лампа")
+            }
         } else if (choice === "3") {
             showInventory();
         } else if (choice === "4") {
@@ -175,8 +276,12 @@ while (true) {
             balance += 5
             alert(`На вашем балансе: ${balance} монет`)
         } else if (choice === "3") {
-            alert("Вы нашли Магический меч")
-            inventory.push("Магический меч")
+            if (inventory.includes("Магический меч")) {
+                alert("Вы уже нашли Магический меч")
+            } else {
+                alert("Вы нашли Магический меч")
+                inventory.push("Магический меч")
+            }
         } else if (choice === "4") {
             showInventory();
         } else if (choice === "5") {
@@ -235,14 +340,18 @@ while (true) {
         } else if (choice === "1") {
             alert("Вы осмотрели мешок и ничего не нашли")
         } else if (choice === "2") {
-            alert("Вы осмотрели горшок и нашли в нём Ключ")
-            inventory.push("Ключ")
+            if (inventory.includes("Ключ")) {
+                alert("Вы уже подобрали ключ")
+            } else {
+                alert("Вы осмотрели горшок и нашли в нём Ключ")
+                inventory.push("Ключ")
+            }
         } else if (choice === "3") {
             showInventory();
         } else if (choice === "4") {
             alert("Вы возвращаетесь в конец восточного коридора")
             room = "Продолжение восточного коридора"
-        } 
+        }
         else {
             alert("Такого прохода не существует.")
         }
