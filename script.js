@@ -5,6 +5,7 @@ let lever = false;
 let firstQuestion = false;
 let secondQuestion = false;
 let thirdQuestion = false;
+let brick = false;
 let eastDoor = false;
 let playerNumber = 0;
 let bossNumber = 0;
@@ -393,8 +394,8 @@ while (true) {
             break
         } else if (choice === "1") {
             alert("Вы осмотрели комнату и вдруг нашли подозрительный кирпич.")
-            confirm("Нажать на него?")
-            if (confirm === true) {
+            brick = confirm("Нажать на него?")
+            if (brick === true) {
                 alert("Внезапно открывается только что закрытая дверь, которая отделяет вас от комнаты босса.")
                 eastDoor = true;
             } else {
