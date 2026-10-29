@@ -117,10 +117,10 @@ while (true) {
             const firstAnswer = prompt("Что нужно осмотреть, чтобы найти Священную Лампу?")
             if (firstAnswer === "Балкон") {
                 alert("Вы ответили правильно.")
-                firstQuestion = true
                 if (firstQuestion === true) {
                     alert("Вы уже ответили на вопрос №1 правильно.")
                 }
+                firstQuestion = true
             } else {
                 alert("Неправильный ответ.")
             }
@@ -128,10 +128,10 @@ while (true) {
             const secondAnswer = prompt("Сколько существует камер в Тюрьме - Западном коридоре?")
             if (secondAnswer === "3") {
                 alert("Вы ответили правильно.")
-                secondQuestion = true
                 if (secondQuestion === true) {
                     alert("Вы уже ответили на вопрос №2 правильно.")
                 }
+                secondQuestion = true
             } else {
                 alert("Неправильный ответ.")
             }
@@ -139,10 +139,10 @@ while (true) {
             const thirdAnswer = prompt("Как называется вся локация?")
             if (thirdAnswer === "ЗАТЕРЯННОЕ КОРОЛЕВСТВО") {
                 alert("Вы ответили правильно.")
-                thirdQuestion = true
                 if (thirdQuestion === true) {
                     alert("Вы уже ответили на вопрос №3 правильно.")
                 }
+                thirdQuestion = true
             } else {
                 alert("Неправильный ответ.")
             }
