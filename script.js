@@ -124,33 +124,40 @@ while (true) {
         } else if (choice === "1") {
             const firstAnswer = prompt("Что нужно осмотреть, чтобы найти Священную Лампу?")
             if (firstAnswer === "Балкон") {
-                alert("Вы ответили правильно.")
                 if (firstQuestion === true) {
                     alert("Вы уже ответили на вопрос №1 правильно.")
                 }
-                else { firstQuestion = true }
+                else {
+                    alert("Вы ответили правильно.")
+                    firstQuestion = true
+                }
             } else {
                 alert("Неправильный ответ.")
             }
         } else if (choice === "2") {
             const secondAnswer = prompt("Сколько существует камер в Тюрьме - Западном коридоре?")
             if (secondAnswer === "3") {
-                alert("Вы ответили правильно.")
                 if (secondQuestion === true) {
                     alert("Вы уже ответили на вопрос №2 правильно.")
                 }
-                else { secondQuestion = true }
+                else {
+                    alert("Вы ответили правильно.")
+                    secondQuestion = true
+                }
             } else {
                 alert("Неправильный ответ.")
             }
         } else if (choice === "3") {
             const thirdAnswer = prompt("Как называется вся локация?")
             if (thirdAnswer === "ЗАТЕРЯННОЕ КОРОЛЕВСТВО") {
-                alert("Вы ответили правильно.")
+
                 if (thirdQuestion === true) {
                     alert("Вы уже ответили на вопрос №3 правильно.")
                 }
-                else { thirdQuestion = true }
+                else {
+                    alert("Вы ответили правильно.")
+                    thirdQuestion = true
+                }
             } else {
                 alert("Неправильный ответ.")
             }
