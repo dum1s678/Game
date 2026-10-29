@@ -1,12 +1,24 @@
 const inventory = [];
+let looked = {
+    "bag1": false,
+    "camera": false,
+    "pot1": false,
+    "chest1": false,
+    "brick1": false,
+    "pot2": false,
+    "chest2": false
+}
+let questions = {
+    "firstQuestion": false,
+    "secondQuestion": false,
+    "thirdQuestio": false
+}
+let items = {
+    "lever": false,
+    "eastDoor": false,
+}
 let room = "Вход";
 let balance = 0;
-let lever = false;
-let firstQuestion = false;
-let secondQuestion = false;
-let thirdQuestion = false;
-let brick = false;
-let eastDoor = false;
 let playerNumber = 0;
 let bossNumber = 0;
 
@@ -46,9 +58,14 @@ while (true) {
         } else if (choice === "1") {
             alert("Горшок пуст.")
         } else if (choice === "2") {
-            alert("Вы нашли 5 монет.")
-            balance += 5
-            alert(`На вашем балансе: ${balance} монет.`)
+            if (looked.bag1 === true){
+                alert("Вы уже собрали эти монеты.")
+            } else {
+                alert("Вы нашли 5 монет.")
+                balance += 5
+                alert(`На вашем балансе: ${balance} монет.`)
+                looked.bag1 = true
+            }
         } else if (choice === "3") {
             alert("Сундук пуст.")
         } else if (choice === "4") {
@@ -81,9 +98,14 @@ while (true) {
         if (choice === "0") {
             break
         } else if (choice === "1") {
-            alert("Вы обыскали камеру №1 и нашли под кроватью 10 монет.")
-            balance += 10
-            alert(`На вашем балансе: ${balance} монет`)
+            if (looked.camera === true) {
+                alert("Камера №1 уже обыскана.")
+            } else {
+                alert("Вы обыскали камеру №1 и нашли под кроватью 10 монет.")
+                balance += 10
+                alert(`На вашем балансе: ${balance} монет`)
+                looked.camera = true
+            }
         } else if (choice === "2") {
             alert("Вы обыскали камеру №2 и ничего в ней не нашли.")
         } else if (choice === "3") {
@@ -124,12 +146,12 @@ while (true) {
         } else if (choice === "1") {
             const firstAnswer = prompt("Что нужно осмотреть, чтобы найти Священную Лампу?")
             if (firstAnswer === "Балкон") {
-                if (firstQuestion === true) {
+                if (questions.firstQuestion === true) {
                     alert("Вы уже ответили на вопрос №1 правильно.")
                 }
                 else {
                     alert("Вы ответили правильно.")
-                    firstQuestion = true
+                    questions.firstQuestion = true
                 }
             } else {
                 alert("Неправильный ответ.")
@@ -137,12 +159,12 @@ while (true) {
         } else if (choice === "2") {
             const secondAnswer = prompt("Сколько существует камер в Тюрьме - Западном коридоре?")
             if (secondAnswer === "3") {
-                if (secondQuestion === true) {
+                if (questions.secondQuestion === true) {
                     alert("Вы уже ответили на вопрос №2 правильно.")
                 }
                 else {
                     alert("Вы ответили правильно.")
-                    secondQuestion = true
+                    questions.secondQuestion = true
                 }
             } else {
                 alert("Неправильный ответ.")
@@ -151,21 +173,21 @@ while (true) {
             const thirdAnswer = prompt("Как называется вся локация?")
             if (thirdAnswer === "ЗАТЕРЯННОЕ КОРОЛЕВСТВО") {
 
-                if (thirdQuestion === true) {
+                if (questions.thirdQuestion === true) {
                     alert("Вы уже ответили на вопрос №3 правильно.")
                 }
                 else {
                     alert("Вы ответили правильно.")
-                    thirdQuestion = true
+                    questions.thirdQuestion = true
                 }
             } else {
                 alert("Неправильный ответ.")
             }
         } else if (choice === "4") {
-            if (firstQuestion === true
-                && secondQuestion === true
-                && thirdQuestion === true
-                && lever === true) {
+            if (questions.firstQuestion === true
+                && questions.secondQuestion === true
+                && questions.thirdQuestion === true
+                && items.lever === true) {
                 alert("Вы выполнили все условия и прошли в закрытую комнату.")
                 if (inventory.includes("Защитный амулет")) {
                     alert("Вы уже получили защитный амулет.")
@@ -199,9 +221,14 @@ while (true) {
         if (choice === "0") {
             break
         } else if (choice === "1") {
-            alert("Вы осмотрели горшок и нашли 5 монет.")
-            balance += 5
-            alert(`На вашем балансе: ${balance} монет.`)
+            if (looked.pot1 === true) {
+                alert("Вы уже осмотрели этот горшок.")
+            } else {
+                alert("Вы осмотрели горшок и нашли 5 монет.")
+                balance += 5
+                alert(`На вашем балансе: ${balance} монет.`)
+                looked.pot1 = true
+            }
         } else if (choice === "2") {
             alert("Вы осмотрели мешок и ничего не нашли.")
         } else if (choice === "3") {
@@ -232,9 +259,14 @@ while (true) {
         } else if (choice === "1") {
             alert("Вы осмотрели горшок и ничего не нашли.")
         } else if (choice === "2") {
-            alert("Вы осмотрели сундук и 15 монет.")
-            balance += 15
-            alert(`На вашем балансе: ${balance} монет.`)
+            if (looked.chest1 === true) {
+                alert("Вы уже осмотрели сундук.")
+            } else {
+                alert("Вы осмотрели сундук и 15 монет.")
+                balance += 15
+                alert(`На вашем балансе: ${balance} монет.`)
+                looked.chest1 = true
+            }
         } else if (choice === "3") {
             if (inventory.includes("Ключ")) {
                 alert("Вы отправились в финальную комнату с боссом.")
@@ -263,11 +295,11 @@ while (true) {
         if (choice === "0") {
             break
         } else if (choice === "1") {
-            if (lever === true) {
+            if (items.lever === true) {
                 alert("Вы уже использовали рычаг.")
             } else {
                 alert("Вы дёрнули за рычаг и что-то произошло.")
-                lever = true
+                items.lever = true
             }
         } else if (choice === "2") {
             if (inventory.includes("Священная лампа")) {
@@ -301,9 +333,14 @@ while (true) {
         } else if (choice === "1") {
             alert("Вы осмотрели горшок и ничего не нашли.")
         } else if (choice === "2") {
-            alert("Возле кирпича в стене вы нашли 15 монет.")
-            balance += 15
-            alert(`На вашем балансе: ${balance} монет.`)
+            if (looked.brick1 === true) {
+                alert("Вы уже осмотрели кирпич в стене.")
+            } else {
+                alert("Возле кирпича в стене вы нашли 15 монет.")
+                balance += 15
+                alert(`На вашем балансе: ${balance} монет.`)
+                looked.brick1 = true
+            }
         } else if (choice === "3") {
             alert("Вы повернули в комнату.")
             room = "Комната с сундуком"
@@ -334,9 +371,14 @@ while (true) {
         } else if (choice === "1") {
             alert("Вы осмотрели мешок и ничего не нашли.")
         } else if (choice === "2") {
-            alert("Вы осмотрели горшок и нашли 5 монет.")
-            balance += 5
-            alert(`На вашем балансе: ${balance} монет.`)
+            if (looked.pot2 === true) {
+                alert("Вы уже осмотрели горшок.")
+            } else {
+                alert("Вы осмотрели горшок и нашли 5 монет.")
+                balance += 5
+                alert(`На вашем балансе: ${balance} монет.`)
+                looked.pot2 = true
+            }
         } else if (choice === "3") {
             if (inventory.includes("Магический меч")) {
                 alert("Вы уже нашли Магический меч.")
@@ -402,20 +444,20 @@ while (true) {
             break
         } else if (choice === "1") {
             alert("Вы осмотрели комнату и вдруг нашли подозрительный кирпич.")
-            brick = confirm("Нажать на него?")
+            let brick = confirm("Нажать на него?")
             if (brick === true) {
                 alert("Внезапно открывается только что закрытая дверь, которая отделяет вас от комнаты босса.")
-                eastDoor = true;
+                items.eastDoor = true;
             } else {
                 alert("Ничего не происходит.")
             }
         } else if (choice === "2") {
             alert("Вы осмотрели сундук и ничего не нашли.")
         } else if (choice === "3") {
-            if (eastDoor === true) {
+            if (items.eastDoor === true) {
                 alert("Вы проходите в комнату босса")
                 room = "Комната с боссом"
-            } else if (eastDoor === false) {
+            } else if (items.eastDoor === false) {
                 if (inventory.includes("Ключ")) {
                     alert("Вы вставляете ключ в замочную скважину и вдруг оказывается, что он не подходит.")
                     alert("Вы не можете пройти в комнату с боссом, так как дверь закрыта")
@@ -477,9 +519,14 @@ while (true) {
             alert("Вдруг за вашей спиной появляется огромный рыцарь.")
             room = "Сражение с боссом"
         } else if (choice === "2") {
-            alert("Вы осмотрели сундук и нашли 5 монет.")
-            balance += 5
-            alert(`На вашем балансе: ${balance} монет.`)
+            if (looked.chest2 === true) {
+                alert("Вы уже осмотрели этот сундук.")
+            } else {
+                alert("Вы осмотрели сундук и нашли 5 монет.")
+                balance += 5
+                alert(`На вашем балансе: ${balance} монет.`)
+                looked.chest2 = true
+            }
         } else if (choice === "3") {
             showInventory();
         } else if (choice === "4") {
