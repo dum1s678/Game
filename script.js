@@ -159,6 +159,9 @@ while (true) {
                         inventory.push("Защитный амулет")
                     }
                 }
+            else {
+                alert("Вы не выполнили определённые условия, поэтому вы не можете пройти дальше")
+            }
         } else if (choice === "5") {
             showInventory();
         } else if (choice === "6") {
